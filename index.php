@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login</title>
+        <title>Index</title>
     </head>
     <body>
+    <?php
+        include 'header.html';
+    ?>
 
     </body>
 </html>
