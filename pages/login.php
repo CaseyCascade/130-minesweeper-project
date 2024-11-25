@@ -10,7 +10,8 @@
     include 'header.html';
     ?>
 
-    <form action="./server/login.php" method="POST">
+    <form action="../server/process.php" method="POST">
+    <h1>Login Page</h1>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username">
         <br><br>
@@ -19,7 +20,7 @@
         <input type="text" id="password" name="password">
         <br><br>
 
-        <button type="submit" name="action" value="login">Login</button>
+        <button type="submit" name="action" value="login">Submit</button>
 
     </form>
 

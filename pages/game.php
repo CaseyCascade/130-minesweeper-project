@@ -2,15 +2,15 @@
 <html>
 
 <head>
-    <title>Help</title>
+    <title>Minesweeper</title>
 </head>
 
 <body>
-
     <?php
     include 'header.html';
     ?>
 
+<h1>Game Page</h1>
 </body>
 
 </html>

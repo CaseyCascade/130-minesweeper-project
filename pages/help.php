@@ -2,14 +2,17 @@
 <html>
 
 <head>
-    <title>Minesweeper</title>
+    <title>Help</title>
 </head>
 
 <body>
+
     <?php
     include 'header.html';
     ?>
 
+    <h1>Help Page</h1>
+    
 </body>
 
 </html>
