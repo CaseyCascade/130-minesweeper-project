@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Index</title>
-    </head>
-    <body>
+
+<head>
+    <title>Index</title>
+</head>
+
+<body>
     <?php
-        include 'header.html';
+    include 'header.html';
     ?>
 
-    </body>
+</body>
+
 </html>

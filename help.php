@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Help</title>
 </head>
+
 <body>
-    
-<?php
+
+    <?php
     include 'header.html';
-?>
+    ?>
 
 </body>
+
 </html>
