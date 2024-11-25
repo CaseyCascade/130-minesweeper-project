@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Sign Up</title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <input type="text" id="password" name="password">
         <br><br>
 
-        <button type="submit" name="action" value="login">Login</button>
+        <button type="submit" name="action" value="signup">Sign Up</button>
 
     </form>
 
