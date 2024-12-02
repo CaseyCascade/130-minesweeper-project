@@ -25,11 +25,11 @@
 <label for="auto_first_move">Auto First Move:</label>
 <input type="checkbox" id="auto_first_move"> <br>
 
-<label for="difficulty">Difficulty / Board Size:</label>
-<select id="difficulty" required> 
-    <option value="easy">Easy</option>
-    <option value="medium">Medium</option>
-    <option value="hard">Hard</option>
+<label for="board_size">Board Size:</label>
+<select id="board_size"> 
+    <option value="small">Small (8x8)</option>
+    <option value="medium">Medium (16x16)</option>
+    <option value="large">Large (30x16)</option>
 </select> <br>
 
 <label for="style">Board Color / Texture:</label>
@@ -50,3 +50,5 @@
 </body>
 
 </html>
+
+<script type="module" src="game.js"></script>
