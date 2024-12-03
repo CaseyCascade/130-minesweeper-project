@@ -46,9 +46,9 @@
     <option value="default">Option 2</option>
 </select> <br>
 
-<button type="button" onclick="initGame()">Play Game</button>
+<button type="button" onclick="setInitParameters()">Play Game</button>
 </body>
 
 </html>
 
-<script type="module" src="game.js"></script>
+<script type="module" src="../src/game.js"></script>
