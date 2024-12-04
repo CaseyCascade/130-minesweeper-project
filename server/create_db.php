@@ -1,5 +1,5 @@
 <?php
-    function create_db($conn, $dbname, $tableName){}
+    function create_db($conn, $dbname, $tableName){
         $jsonFile = '../data/preset_data.json'; // Path to your JSON file
         
         try {
@@ -55,5 +55,5 @@
         }
         
         $conn = null; // Close connection
-    }    
+    }
 ?>
