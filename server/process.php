@@ -134,6 +134,11 @@ function handleRequest() {
                 $stmt->bind_param("iissi", $userid, $won, $startdatetime, $duration, $numturns);
                 if ($stmt->execute()) {
                     echo "Inserted game into the database.<br><br>";
+                    $stmt = $conn->prepare("UPDATE `users` SET gameswon = gameswon + ?, gamesplayed = gamesplayed + 1, timeplayedsec = timeplayedsec + ? WHERE id = ?");
+                    $duration_sec = strtotime($duration) - 1733353200;
+                    echo 'Seconds: ' . $duration_sec . '<br>';
+                    $stmt->bind_param("iii", $won, $duration_sec, $userid);
+                    $stmt->execute();
                 } else {
                     echo "Error: " . $stmt->error;
                 }
