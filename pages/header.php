@@ -16,6 +16,7 @@
                 <a href="index.php">Home</a>
                 <a href="help.php">Help</a>
                 <a href="options.php">Play Game</a>
+                <a href="leaderboard.php">Leaderboard</a>
 <?php
     session_start();
     if (!isset($_SESSION['username'])) {
