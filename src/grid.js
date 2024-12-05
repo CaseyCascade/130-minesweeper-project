@@ -21,16 +21,17 @@ export class Grid {
         return container;
     }
 
-    autoFirstMove() //FIXME This softlocks the game somehow
+    autoFirstMove() 
     {
         let moveMade = false;
         while (!moveMade) {
             const r = Math.floor(Math.random() * this.rows);
             const c = Math.floor(Math.random() * this.cols);
             const cell = this.cells[r][c];
-            if (!cell.isMine && cell.adjacentMines == 0) { // HACK Unsure if we should allow for it to pick spaces adjacent to mines
+            if (!cell.isMine && cell.adjacentMines == 0) { 
                 cell.reveal();
                 moveMade = true; 
+                console.log("Move Made at Cell[" + r +"," + c +"]")
             }
         }
     }
@@ -47,11 +48,6 @@ export class Grid {
             this.cells.push(row);
         }
         console.log("Grid initialized with cells:", this.cells);
-
-        if (this.game.autoFirstMove)
-        {
-            this.autoFirstMove(); 
-        }
     }
     
 

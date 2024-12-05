@@ -36,6 +36,10 @@ export class Game {
         this.grid.render(gameContainer);  
         console.log("Grid rendered to #gameContainer");
         this.updateInfoPanel();
+        if (this.autoFirstMove)
+        {
+            this.grid.autoFirstMove(); 
+        }
         this.startTimer();
     }
 

@@ -36,6 +36,7 @@ export class Cell {
     reveal() {
         if (this.isRevealed || this.isFlagged) return;
 
+        console.log("Cell [" + this.row + "," + this.col + "] Revealed");  
         this.isRevealed = true;
         this.element.classList.add('revealed');
 
