@@ -36,6 +36,7 @@ export class Cell {
     reveal() {
         if (this.isRevealed || this.isFlagged) return;
 
+        console.log("Cell [" + this.row + "," + this.col + "] Revealed");  
         this.isRevealed = true;
         this.element.classList.add('revealed');
 
@@ -54,12 +55,16 @@ export class Cell {
     toggleFlag() {
         if (this.isRevealed) return;
 
+
         if (this.isFlagged)
         {
             this.grid.numFlags--;
         } 
         else 
         {
+            console.log("numFlags: " + this.grid.numFlags);
+            console.log("numMines: " + this.grid.game.numMines);
+            if (this.grid.numFlags >= this.grid.game.numMines) return; 
             this.grid.numFlags++;
         }
         this.isFlagged = !this.isFlagged;
