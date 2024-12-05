@@ -19,7 +19,7 @@
         <br><br>
 
         <label for="password">Password:</label>
-        <input type="text" id="password" name="password">
+        <input type="password" id="password" name="password">
         <br><br>
 
         <button type="submit" name="action">Submit</button>
