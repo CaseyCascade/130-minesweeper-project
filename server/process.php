@@ -1,7 +1,14 @@
 <link rel="stylesheet" href="../styles/header.css">
 <link rel="stylesheet" href="../styles/fs.css">
+<?php
+
+$displaybody = (isset($_POST['action']) && $_POST['action'] != 'none');
+
+?>
+<?php if ($displaybody): ?>
 <body class="msgbody">
 <div class="centermsg">
+<?php endif; ?>
 <?php
 # Server Globals # Idk how exactly this works without localhost so feel free to change the credentials 
 
@@ -167,5 +174,7 @@ function handleRequest() {
 handleRequest();  
 
 ?>
+<?php if ($displaybody): ?>
 </div>
 </body>
+<?php endif; ?>
