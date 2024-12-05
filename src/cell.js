@@ -29,7 +29,23 @@ export class Cell {
         return cellElement;
     }
     
-
+    gameOver() {
+        this.element.classList.add('mine'); // Highlight the current cell as a mine
+        this.grid.cells.forEach((row) => { // Loop through each row
+            row.forEach((cell) => { // Loop through each cell in the row
+                cell.isRevealed = true;
+                cell.element.classList.add('revealed', 'disabled'); // Reveal and disable each cell
+                if (cell.isMine) {
+                    cell.element.classList.add('mine'); // Highlight all mines
+                } else if (cell.adjacentMines > 0) {
+                    cell.element.textContent = cell.adjacentMines; // Display adjacent mine count
+                } else {
+                    cell.element.textContent = ''; // Empty cell
+                }
+            });
+        });
+    }
+    
     reveal() {
         if (this.isRevealed || this.isFlagged) return;
 
@@ -37,8 +53,7 @@ export class Cell {
         this.element.classList.add('revealed');
 
         if (this.isMine) {
-            this.element.classList.add('mine');
-            alert("Game Over!"); //TODO Post game results and add option to restart
+             this.gameOver(); 
         } else if (this.adjacentMines > 0) {
             this.element.textContent = this.adjacentMines;
         } else {
@@ -52,8 +67,17 @@ export class Cell {
     toggleFlag() {
         if (this.isRevealed) return;
 
+        if (this.isFlagged)
+        {
+            this.grid.flagCount--;
+        } 
+        else 
+        {
+            this.grid.flagCount++;
+        }
         this.isFlagged = !this.isFlagged;
         this.element.classList.toggle('flag', this.isFlagged);
+
     }
 
     setMine() {

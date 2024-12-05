@@ -5,7 +5,9 @@ export class Grid {
         this.rows = rows;
         this.cols = cols;
         this.cells = []; // 2D array to store Cell instances
+        this.flagCount = 0; 
         this.container = this.createContainer(); // DOM container for the grid
+        this.gameOver = false;
     }
 
     // Create the grid container
