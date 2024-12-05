@@ -3,7 +3,7 @@
 
 <head>
     <title>Contact</title>
-    <link rel="stylesheet" href="../styles/game.css">
+    <link rel="stylesheet" href="../styles/fss.css">
 </head>
 
 <body>
