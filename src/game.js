@@ -5,6 +5,11 @@ var game;
 var gameOverSound = document.getElementById('gameOverSound');
 var youWinSound = document.getElementById('youWinSound');
 var music = document.getElementById('music'); 
+
+gameOverSound.volume = 0.3;
+youWinSound.volume = 0.3;
+music.volume = 0.15;
+
 export class Game {
     constructor(numMines, clearGrid, autoFirstMove, boardSize, style, theme) {
         this.numMines = numMines; 
