@@ -12,13 +12,13 @@ $password = '';
 
 $dbname = 'minesweeper';
 $userTable = 'users';
-$leaderboardTable = 'leaderboard';
+$gamesTable = 'games';
 
 session_start();
 
 function handleRequest() {
     global $servername, $username, $password;
-    global $dbname, $userTable, $leaderboardTable;
+    global $dbname, $userTable, $gamesTable;
 
     // Establish a database connection
     $conn = new mysqli($servername, $username, $password);
@@ -31,11 +31,12 @@ function handleRequest() {
     include("create_db.php");
     create_db($conn, $dbname);
     create_table($conn, $userTable);
+    create_table($conn, $gamesTable);
 
     // Check if a specific key or parameter is set in the POST data
     if (isset($_POST['action'])) {
         $action = $_POST['action'];
-        echo "Performing action: $action<br>";
+        // echo "Performing action: $action<br>";
 
         // Handle different actions based on the 'action' key
         switch ($action) {
@@ -99,7 +100,45 @@ function handleRequest() {
                     echo "<a href='../pages/login.php'>Return to Login</a>";
                 }
 
-                break; 
+                break;
+            
+            case 'finishgame':
+
+                // Retrieve all values needed for the leaderboard
+                $userid = -1;
+                if (isset($_SESSION['userid'])) {
+                    $userid = (int)$_SESSION['userid'];
+                }
+                $won = 0;
+                if (isset($_POST['won'])) {
+                    $won = (int)$_POST['won'];
+                }
+                $startdatetime = "YYYY-MM-DD HH:MI:SS";
+                if (isset($_POST['startdatetime'])) {
+                    $startdatetime = $_POST['startdatetime'];
+                }
+                $duration = "00:00:00";
+                if (isset($_POST['duration'])) {
+                    $duration = $_POST['duration'];
+                }
+                $numturns = -1;
+                if (isset($_POST['numturns'])) {
+                    $numturns = (int)$_POST['numturns'];
+                }
+
+                // Register game into database
+                $stmt = $conn->prepare("
+                    INSERT INTO `games` (userid, won, startdatetime, duration, numturns) 
+                    VALUES (?, ?, ?, ?, ?);"
+                );
+                $stmt->bind_param("iissi", $userid, $won, $startdatetime, $duration, $numturns);
+                if ($stmt->execute()) {
+                    echo "Inserted game into the database.<br><br>";
+                } else {
+                    echo "Error: " . $stmt->error;
+                }
+
+                break;
                 
             default:
                 echo "Invalid action specified.";
