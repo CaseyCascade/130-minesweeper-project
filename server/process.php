@@ -11,14 +11,14 @@ $username = 'root';
 $password = '';
 
 $dbname = 'minesweeper';
-$usertable = 'users';
+$userTable = 'users';
+$leaderboardTable = 'leaderboard';
 
 session_start();
 
 function handleRequest() {
     global $servername, $username, $password;
-    global $dbname, $usertable;
-
+    global $dbname, $userTable, $leaderboardTable;
 
     // Establish a database connection
     $conn = new mysqli($servername, $username, $password);
@@ -29,7 +29,8 @@ function handleRequest() {
     }
 
     include("create_db.php");
-    create_db($conn, $dbname, $usertable);
+    create_db($conn, $dbname);
+    create_table($conn, $userTable);
 
     // Check if a specific key or parameter is set in the POST data
     if (isset($_POST['action'])) {
