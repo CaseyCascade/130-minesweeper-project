@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="../styles/header.css">
+<link rel="stylesheet" href="../styles/fs.css">
+<body>
 <?php
 # Server Globals # Idk how exactly this works without localhost so feel free to change the credentials 
 
@@ -74,8 +77,6 @@ function handleRequest() {
                 break;
 
             case 'login':
-
-                // TODO: Code to login user
 
                 // Store POST data into variables
                 $username = $_POST['username'];
@@ -164,3 +165,7 @@ function handleRequest() {
 }
 
 handleRequest();  
+
+?>
+
+</body>

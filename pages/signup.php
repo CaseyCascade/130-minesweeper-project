@@ -3,7 +3,6 @@
 
 <head>
     <title>Sign Up</title>
-    
 </head>
 
 <body>
@@ -31,6 +30,7 @@
 
     </form>
 
+    <br>
     <p>Already have an account? <a href="login.php">Log in</a></p>
 
 </body>
