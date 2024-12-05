@@ -14,7 +14,7 @@ $dbname = 'minesweeper';
 $userTable = 'users';
 $gamesTable = 'games';
 
-session_start();
+if (!isset($_SESSION)) session_start();
 
 function handle_db($conn) {
     global $dbname, $userTable, $gamesTable;
