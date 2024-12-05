@@ -9,7 +9,7 @@
     <?php
     include 'header.php';
     ?>
-
+    <link rel="stylesheet" href="../styles/fs.css">
 <h1>Game Options</h1>
 
 <label for="num_mines"># of Mines:</label>
@@ -18,8 +18,8 @@
 
 <label for="win_condition">Win Condition:</label>
 <select id="win_condition" required> 
-    <option value="clear_grid">Clear Entire Grid</option>
     <option value="clear_mines">Clear All Mines</option>
+    <option value="clear_grid">Clear Entire Grid</option>
 </select> <br>
 
 <label for="auto_first_move">Auto First Move:</label>

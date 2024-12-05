@@ -1,4 +1,4 @@
-const DEBUG_MODE = false;
+const DEBUG_MODE = true;
 export class Cell {
     constructor(row, col, grid) {
         this.row = row;
@@ -21,8 +21,8 @@ export class Cell {
         }
     
         cellElement.addEventListener('click', () => {
-            this.grid.game.update();
             this.reveal();
+            this.grid.game.update();
         });
         cellElement.addEventListener('contextmenu', (e) => {
             e.preventDefault();
@@ -41,7 +41,7 @@ export class Cell {
         this.element.classList.add('revealed');
 
         if (this.isMine) {
-             this.grid.game.gameOver();   
+             this.grid.game.endGame(false); //Game Over   
         } else if (this.adjacentMines > 0) {
             this.element.textContent = this.adjacentMines;
         } else {
