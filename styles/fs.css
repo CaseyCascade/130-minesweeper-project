@@ -36,6 +36,13 @@ footer a:hover { text-decoration: underline; }
     main { padding: 10px; }
 }
 
+form {
+
+    width: 25vw;
+    margin: auto;
+
+}
+
 button {
     background: #960000; color: #FFF; font-size: 1rem; font-weight: bold;
     padding: 10px 20px; border: none; border-radius: 5px;
