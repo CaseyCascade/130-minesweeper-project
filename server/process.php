@@ -1,20 +1,35 @@
 <?php
 # Server Globals # Idk how exactly this works without localhost so feel free to change the credentials 
-$servername = "localhost";
-$username = "caseycascade";
-$password = "Z7-X!8AOuK7*bnwr";
-$dbname = "minesweeper";
+
+// $servername = "localhost";
+// $username = "caseycascade";
+// $password = "Z7-X!8AOuK7*bnwr";
+// $dbname = "minesweeper";
+
+$host = 'localhost';
+$username = 'root';
+$password = '';
+
+$dbname = 'minesweeper';
+$usertable = 'users';
+
+session_start();
 
 function handleRequest() {
-    global $servername, $username, $password, $dbname, $data; 
+    global $servername, $username, $password;
+    global $dbname, $usertable;
+
 
     // Establish a database connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password);
 
     // Check for connection errors
     if ($conn->connect_error) {
         return ["error" => "Connection failed: " . $conn->connect_error];
     }
+
+    include("create_db.php");
+    create_db($conn, $dbname, $usertable);
 
     // Check if a specific key or parameter is set in the POST data
     if (isset($_POST['action'])) {
@@ -23,17 +38,64 @@ function handleRequest() {
         // Handle different actions based on the 'action' key
         switch ($action) {
             case 'signup':
-                $username = isset($_POST['username']) ? $_POST['username'] : 0;
-                $password = isset($_POST['password']) ? $_POST['password'] : 0;
                 
-                // Code to register user into database //TODO
+                // Store POST data into variables
+                $username = $_POST['username'];
+                $passhash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+                // Check if user exists
+                $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?;");
+                $stmt->bind_param("s", $username);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if ($result->num_rows > 0) {
+                    echo "User already exists, please pick a different username.<br><br>";
+                    echo "<a href='../pages/signup.php'>Return to Signup</a><br>";
+                    break;
+                }
+
+                // Register user into database
+                $stmt = $conn->prepare("INSERT INTO users (`username`, `passhash`) VALUES (?, ?)");
+                $stmt->bind_param("ss", $username, $passhash);
+                if ($stmt->execute()) {
+                    echo "Sign-up successful.<br><br>";
+                    echo "<a href='../pages/login.php'>Log In</a>";
+                } else {
+                    echo "Error: " . $stmt->error;
+                }
+                
                 break;
 
             case 'login':
-                $username = isset($_POST['username']) ? $_POST['username'] : 0;
-                $password = isset($_POST['password']) ? $_POST['password'] : 0;
 
-                // Code to login user //TODO
+                // TODO: Code to login user
+
+                // Store POST data into variables
+                $username = $_POST['username'];
+                $passhash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+                // Check if user exists
+                $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?;");
+                $stmt->bind_param("s", $username);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows == 1) {
+                    $user = $result->fetch_assoc();
+                    if (password_verify($passhash, $user['password'])) {
+                        $_SESSION['userid'] = $user['id'];
+                        $_SESSION['username'] = $user['username'];
+                        header("Location: ../pages/index.php");
+                        exit();
+                    } else {
+                        echo "Invalid Credentials.<br>";
+                        echo "<a href='../pages/login.php'>Return to Login</a>";
+                    }
+                } else {
+                    echo "Invalid credentials.";
+                    echo "<a href='../pages/login.php'>Return to Login</a>";
+                }
+
                 break; 
                 
             default:
