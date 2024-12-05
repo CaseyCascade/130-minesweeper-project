@@ -5,7 +5,7 @@
     <title>Minesweeper</title>
     <link rel="stylesheet" href="../styles/game.css">
     <?php
-    include 'header.html';
+    include 'header.php';
     ?>
 </head>
 

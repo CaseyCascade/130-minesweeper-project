@@ -7,7 +7,7 @@
 
 <body>
     <?php
-    include 'header.html';
+    include 'header.php';
     ?>
 
 <h1>Leaderboard Page</h1>

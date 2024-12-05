@@ -7,7 +7,7 @@
 
 <body>
     <?php
-    include 'header.html';
+    include 'header.php';
     ?>
 
     <form action="../server/process.php" method="POST">
