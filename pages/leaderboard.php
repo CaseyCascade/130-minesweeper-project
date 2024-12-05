@@ -113,7 +113,7 @@ function echo_username() {
     $creatornames = ['casey', 'caseycascade', 'bravo', 'braveo'];
     if (in_array($playerNameResult['username'], $creatornames)) {
         echo '<p>Hey, isn\'t that one of the creators?...</p>';
-        echo '<p>Why are they here? They should be working on this project, <a href="https://www.youtube.com/watch?v=4VTBMznLrWs">HAHA!</a> *knee slap*</p>';
+        echo '<p>Why are they here? They should be working on this project, <a target="_blank" href="https://www.youtube.com/watch?v=4VTBMznLrWs">HAHA!</a> *knee slap*</p>';
         echo '<p>pls this isn\'t funny we only have till friday to finish it 🥲';
     }
 
@@ -134,7 +134,7 @@ function echo_username() {
         <tbody>
             <?php while ($game = $playerGames->fetch_assoc()): ?>
                 <tr>
-                    <td><?php echo $game['won'] ? 'Yes' : 'No'; ?></td>
+                    <td><?php echo $game['won'] ? '✅' : '❌'; ?></td>
                     <td><?php echo $game['numturns']; ?></td>
                     <td><?php echo $game['duration']; ?></td>
                     <td><?php echo $game['startdatetime']; ?></td>
