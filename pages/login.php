@@ -3,7 +3,7 @@
 
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="../styles/fs.css">
+    
 </head>
 
 <body>

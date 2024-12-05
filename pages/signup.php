@@ -3,7 +3,7 @@
 
 <head>
     <title>Sign Up</title>
-    <link rel="stylesheet" href="../styles/fs.css">
+    
 </head>
 
 <body>

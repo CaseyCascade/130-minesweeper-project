@@ -9,7 +9,7 @@
     <?php
     include 'header.php';
     ?>
-    <link rel="stylesheet" href="../styles/fs.css">
+    
 <h1>Game Options</h1>
 
 <label for="num_mines"># of Mines:</label>
