@@ -16,7 +16,7 @@ $gamesTable = 'games';
 
 session_start();
 
-function handle_db() {
+function handle_db($conn) {
     include("create_db.php");
     create_db($conn, $dbname);
     create_table($conn, $userTable);
@@ -35,7 +35,7 @@ function handleRequest() {
         return ["error" => "Connection failed: " . $conn->connect_error];
     }
 
-    handle_db();
+    handle_db($conn);
 
     // Check if a specific key or parameter is set in the POST data
     if (isset($_POST['action'])) {
