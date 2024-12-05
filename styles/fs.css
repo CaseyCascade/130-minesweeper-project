@@ -94,3 +94,37 @@ footer a:hover {
         padding: 10px;
     }
 }
+
+/* Base Button Style */
+button {
+    background-color: #960000; /* Deep red background */
+    color: #FFFFFF; /* White text for contrast */
+    font-size: 1rem; /* Readable font size */
+    font-weight: bold; /* Bold text */
+    padding: 10px 20px; /* Add padding for a clickable area */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor to indicate it's clickable */
+    text-transform: uppercase; /* Make the text uppercase */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+/* Hover Effect */
+button:hover {
+    background-color: #780000; /* Darker red on hover */
+    transform: scale(1.05); /* Slight scaling for a hover effect */
+}
+
+/* Active State */
+button:active {
+    background-color: #5a0000; /* Even darker red when pressed */
+    transform: scale(0.95); /* Subtle "pressing down" effect */
+}
+
+/* Disabled State */
+button:disabled {
+    background-color: #cccccc; /* Light gray for disabled buttons */
+    color: #666666; /* Darker gray for text */
+    cursor: not-allowed; /* Indicate it's not clickable */
+    opacity: 0.7; /* Slightly faded */
+}

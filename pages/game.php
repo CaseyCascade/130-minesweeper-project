@@ -3,6 +3,7 @@
 
 <head>
     <title>Minesweeper</title>
+    <link rel="stylesheet" href="../styles/fs.css">
     <link rel="stylesheet" href="../styles/game.css">
     <?php
     include 'header.php';
