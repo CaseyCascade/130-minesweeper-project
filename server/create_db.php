@@ -10,26 +10,42 @@
             } else {
                 // echo "Database '$dbname' already exists.<br>";
             }
-        
-            // Select the database
-            $conn->query("USE `$dbname`;");
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
+    function create_table($conn, $tableName) {
+        try {
             $tableExistsQuery = "SHOW TABLES LIKE '" . $tableName . "';";
             $result = $conn->query($tableExistsQuery);
 
             if ($result->num_rows == 0) {
                 // Create a table if it doesn't exist
-                $createTableSQL = "
-                CREATE TABLE `$tableName` (
-                    id INT AUTO_INCREMENT PRIMARY KEY,
-                    username VARCHAR(255) NOT NULL,
-                    passhash VARCHAR(255) NOT NULL
-                );
-                ";
+                $createTableSQL = "";
+                if ($tableName == "users") {
+                    $createTableSQL = "
+                    CREATE TABLE `$tableName` (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        username VARCHAR(255) NOT NULL,
+                        passhash VARCHAR(255) NOT NULL
+                    );
+                    ";
+                }
+                if ($tableName == "games") {
+                    $createTableSQL = "
+                    CREATE TABLE `$tableName` (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        username VARCHAR(255) NOT NULL,
+                        passhash VARCHAR(255) NOT NULL
+                    );
+                    ";
+                }
+
+                
                 $conn->query($createTableSQL);
                 echo "Table '$tableName' is ready.<br>";
             }
-        
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
