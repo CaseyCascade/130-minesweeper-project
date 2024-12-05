@@ -1,5 +1,7 @@
 import {Grid} from './grid.js';
 
+var resultPanel = document.getElementById("resultPanel");
+var game;
 export class Game {
     constructor(numMines, clearGrid, autoFirstMove, boardSize, style, theme) {
         this.numMines = numMines; 
@@ -16,6 +18,7 @@ export class Game {
 
     start()
     {
+        resultPanel.innerHTML = "";
         if (this.boardSize == "small") this.grid = new Grid(8, 8, this);
         else if (this.boardSize == "medium") this.grid = new Grid(16, 16, this);
         else if (this.boardSize == "large") this.grid = new Grid(16, 30, this);
@@ -35,6 +38,7 @@ export class Game {
         }
         this.grid.render(gameContainer);  
         console.log("Grid rendered to #gameContainer");
+        console.log("Clear Grid: " + this.clearGrid);
         this.updateInfoPanel();
         if (this.autoFirstMove)
         {
@@ -43,33 +47,48 @@ export class Game {
         this.startTimer();
     }
 
-    checkForWinCondition()
-    {
-        this.grid.cells.forEach((row) => { // Loop through each row
-            row.forEach((cell) => { // Loop through each cell in the row
-                if (cell.isMine) {
-                    if (!cell.isFlagged) return false; 
-                }
-                else {
-                    if (this.clearGrid){
-                        if (!cell.isRevealed) return false;
+    checkForWinCondition() {
+        for (const row of this.grid.cells) { // Loop through each row
+            for (const cell of row) { // Loop through each cell in the row
+                if (!this.clearGrid) { // Clear Mines Condition
+                    if (cell.isMine && !cell.isFlagged) {
+                        console.log("There are mines left without flags");
+                        return false; // Return false if any mine is not flagged
+                    }
+                } else { // Clear Grid Condition
+                    if (!cell.isMine && !cell.isRevealed) {
+                        console.log("Clear Grid Condition not met");
+                        return false; // Return false if any non-mine cell is not revealed
                     }
                 }
-                return true; 
-            });
-        });
+            }
+        }
+        return true; // If all conditions are met, return true
     }
     
-    gameOver()
+    
+    
+    endGame(win_condition_met)
     {
         this.grid.revealGrid();
         this.stopTimer(); 
-        // TODO Needs additional gameover logic later 
+        let message;
+        if (win_condition_met){
+            message = "You Win!";
+        }
+        else message = "Game Over";
+
+        const textNode = document.createTextNode(message);
+        resultPanel.appendChild(textNode);
+
+        // Optionally, style the message differently for win/lose
+        resultPanel.style.color = win_condition_met ? "green" : "red";
     }
+
     update()
     {
         this.updateInfoPanel(); 
-        if (this.checkForWinCondition()) this.stopTimer(); //TODO Additional victory screen logic
+        if (this.checkForWinCondition()) this.endGame(true); //TODO Additional victory screen logic
     }
 
     updateInfoPanel()
@@ -102,7 +121,7 @@ export class Game {
 }
     
 // Globals
-var game; 
+ 
 
 function getInitParameters(game)
 {
@@ -120,7 +139,11 @@ function getInitParameters(game)
 export function setInitParameters()
 {
     let numMines = document.getElementById("num_mines").value; 
-    let clearGrid = document.getElementById("win_condition").value; 
+
+    let clearGrid;
+    if (document.getElementById("win_condition").value == "clear_grid") clearGrid = true;
+    else clearGrid = false;
+
     let autoFirstMove = document.getElementById("auto_first_move").checked;
     let boardSize = document.getElementById("board_size").value; 
     let style = document.getElementById("style").value;
