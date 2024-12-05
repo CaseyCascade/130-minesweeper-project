@@ -1,3 +1,5 @@
+import {Grid} from './grid.js';
+
 var numMines; 
 var clearGrid;
 var autoFirstMove; 
@@ -7,8 +9,8 @@ var theme;
 
 function getInitParameters()
 {
+    alert("yuh");
     const params = new URLSearchParams(window.location.search);
-
     // Extract the variables
     numMines = params.get("numMines");
     clearGrid = params.get("clearGrid") === "true"; // Convert to boolean
@@ -16,7 +18,7 @@ function getInitParameters()
     boardSize = params.get("boardSize");
     style = params.get("style");
     theme = params.get("theme");
-    }
+}
 
 export function setInitParameters()
 {
@@ -32,35 +34,8 @@ export function setInitParameters()
     window.location.href = queryString; 
 }
 
-function createGrid(rows, columns) {
-    const gridDiv = document.getElementById("grid");
-
-    // Create a table element
-    const table = document.createElement("table");
-    table.style.borderCollapse = "collapse"; // Optional: for better appearance
-
-    // Create rows and cells
-    for (let i = 0; i < rows; i++) {
-        const row = document.createElement("tr");
-        for (let j = 0; j < columns; j++) {
-            const cell = document.createElement("td");
-            cell.style.border = "1px solid black"; // Optional: Add borders
-            cell.style.width = "30px"; // Set cell width
-            cell.style.height = "30px"; // Set cell height
-            cell.textContent = ""; // Optional: Add content (like row,col index)
-            row.appendChild(cell);
-        }
-        table.appendChild(row);
-    }
-
-    // Clear any existing content and append the table to the "grid" div
-    gridDiv.innerHTML = ""; // Clear previous grid (if any)
-    gridDiv.appendChild(table);
-}
-
-function initGame()
-{
-    getInitParameters(); 
+document.addEventListener('DOMContentLoaded', () => {
+    getInitParameters();
     console.log("Number of Mines:", numMines);
     console.log("Clear Grid:", clearGrid);
     console.log("Auto First Move:", autoFirstMove);
@@ -68,16 +43,15 @@ function initGame()
     console.log("Style:", style);
     console.log("Theme:", theme);
 
-    if (boardSize == "small") createGrid(8,8);
-    else if (boardSize == "medium") createGrid(16,16); 
-    else if (boardSize == "large") createGrid(16,30);
+    let grid; 
+    if (boardSize == "small") grid = new Grid(8,8);
+    else if (boardSize == "medium") grid = new Grid(16,16);
+    else if (boardSize == "large") grid = new Grid(16,30);
     else console.log("Error: boardSize not set"); 
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    if (window.location.pathname === "/130-minesweeper-project/pages/game.php") {
-        initGame(); 
-    }
+    grid.initializeGrid();        
+    grid.placeMines(numMines);          
+    grid.render(document.body);  
+    alert("huh");
 });
 
 window.setInitParameters = setInitParameters;
