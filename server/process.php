@@ -104,7 +104,7 @@ function handleRequest() {
             
             case 'finishgame':
 
-                // Retrieve all values needed for the leaderboard
+                // Retrieve all values needed for the games table
                 $userid = -1;
                 if (isset($_SESSION['userid'])) {
                     $userid = (int)$_SESSION['userid'];
