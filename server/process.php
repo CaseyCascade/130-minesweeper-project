@@ -17,6 +17,7 @@ $gamesTable = 'games';
 session_start();
 
 function handle_db() {
+    include("create_db.php");
     create_db($conn, $dbname);
     create_table($conn, $userTable);
     create_table($conn, $gamesTable);
