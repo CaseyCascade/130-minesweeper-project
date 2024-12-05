@@ -11,13 +11,20 @@
 
     <header>
         <div class="nav-container">
-            <div class="logo">Bravo & Casey's Minesweeper (this header is obsolete, please use header.php)</div> 
+            <div class="logo">Bravo & Casey's Minesweeper</div> 
             <nav>
                 <a href="index.php">Home</a>
                 <a href="help.php">Help</a>
                 <a href="options.php">Play Game</a>
-                <a href="login.php">Login</a>
-                <a href="signup.php">Sign Up</a>
+<?php
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        echo '<a href="login.php">Login</a>';
+        echo '<a href="signup.php">Sign Up</a>';
+    } else {
+        echo '<a href="logout.php">Logout</a>';
+    }
+?>
                 <a href="contact.php">Contact</a>
             </nav>
         </div>

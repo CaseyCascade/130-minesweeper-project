@@ -34,6 +34,7 @@ function handleRequest() {
     // Check if a specific key or parameter is set in the POST data
     if (isset($_POST['action'])) {
         $action = $_POST['action'];
+        echo "Performing action: $action<br>";
 
         // Handle different actions based on the 'action' key
         switch ($action) {
@@ -72,7 +73,7 @@ function handleRequest() {
 
                 // Store POST data into variables
                 $username = $_POST['username'];
-                $passhash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $password = $_POST['password'];
 
                 // Check if user exists
                 $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?;");
@@ -82,7 +83,8 @@ function handleRequest() {
 
                 if ($result->num_rows == 1) {
                     $user = $result->fetch_assoc();
-                    if (password_verify($passhash, $user['password'])) {
+                    echo $user['passhash'] . "<br>";
+                    if (password_verify($password, $user['passhash'])) {
                         $_SESSION['userid'] = $user['id'];
                         $_SESSION['username'] = $user['username'];
                         header("Location: ../pages/index.php");
@@ -99,11 +101,11 @@ function handleRequest() {
                 break; 
                 
             default:
-                echo json_encode(['error' => 'Invalid action specified']);
+                echo "Invalid action specified.";
                 break;
         }
     } else {
-        echo json_encode(['error' => 'No action specified']);
+        echo "Invalid action specified.";
     }
 
     $conn->close();
