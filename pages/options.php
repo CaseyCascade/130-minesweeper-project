@@ -13,7 +13,7 @@
 <h1>Game Options</h1>
 
 <label for="num_mines"># of Mines:</label>
-<input type="number" id="num_mines" name="num_mines" min="0" max="100" step="1" required>
+<input type="number" id="num_mines" name="num_mines" min="10" max="99" step="1" value="10" required>
 <br>
 
 <label for="win_condition">Win Condition:</label>

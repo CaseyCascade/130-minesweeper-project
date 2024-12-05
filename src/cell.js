@@ -1,8 +1,9 @@
-const DEBUG_MODE = true;
+const DEBUG_MODE = false;
 export class Cell {
-    constructor(row, col) {
+    constructor(row, col, grid) {
         this.row = row;
         this.col = col;
+        this.grid = grid//Reference to parent grid 
         this.isMine = false;
         this.isRevealed = false;
         this.isFlagged = false;
@@ -42,6 +43,9 @@ export class Cell {
             this.element.textContent = this.adjacentMines;
         } else {
             this.element.textContent = '';
+            this.grid.getNeighbors(this.row, this.col).forEach(neighbor => {
+                neighbor.reveal(); 
+            });
         }
     }
 
