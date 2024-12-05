@@ -22,10 +22,14 @@
             if ($tableName == "users") {
                 $createTableSQL = "
                 CREATE TABLE `users` (
-                    id INT AUTO_INCREMENT PRIMARY KEY,
-                    username VARCHAR(255) NOT NULL,
-                    passhash VARCHAR(255) NOT NULL
-                );
+                    `id` int(11) NOT NULL AUTO_INCREMENT,
+                    `username` varchar(255) NOT NULL,
+                    `passhash` varchar(255) NOT NULL,
+                    `gameswon` int(11) NOT NULL,
+                    `gamesplayed` int(11) NOT NULL,
+                    `timeplayedsec` int(11) NOT NULL,
+                    PRIMARY KEY (`id`)
+                )
                 ";
             }
             if ($tableName == "games") {
