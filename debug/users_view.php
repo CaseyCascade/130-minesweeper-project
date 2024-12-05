@@ -60,10 +60,10 @@ if ($playerId) {
 <table border="1">
     <thead>
         <tr>
-            <th><a href="?sortColumn=username&sortOrder=<?php echo $sortOrder == 'ASC' ? 'DESC' : 'ASC'; ?>">Username</a></th>
-            <th><a href="?sortColumn=gameswon&sortOrder=<?php echo $sortOrder == 'ASC' ? 'DESC' : 'ASC'; ?>">Games Won</a></th>
-            <th><a href="?sortColumn=gamesplayed&sortOrder=<?php echo $sortOrder == 'ASC' ? 'DESC' : 'ASC'; ?>">Games Played</a></th>
-            <th><a href="?sortColumn=timeplayedsec&sortOrder=<?php echo $sortOrder == 'ASC' ? 'DESC' : 'ASC'; ?>">Time Played (Seconds)</a></th>
+            <th><a href="?sortColumn=username&sortOrder=<?php echo $sortColumn == 'username' ? ($sortOrder == 'ASC' ? 'DESC' : 'ASC') : 'DESC'; ?>">Username</a></th>
+            <th><a href="?sortColumn=gameswon&sortOrder=<?php echo $sortColumn == 'gameswon' ? ($sortOrder == 'ASC' ? 'DESC' : 'ASC') : 'DESC'; ?>">Games Won</a></th>
+            <th><a href="?sortColumn=gamesplayed&sortOrder=<?php echo $sortColumn == 'gamesplayed' ? ($sortOrder == 'ASC' ? 'DESC' : 'ASC') : 'DESC'; ?>">Games Played</a></th>
+            <th><a href="?sortColumn=timeplayedsec&sortOrder=<?php echo $sortColumn == 'timeplayedsec' ? ($sortOrder == 'ASC' ? 'DESC' : 'ASC') : 'DESC'; ?>">Time Played (Seconds)</a></th>
         </tr>
     </thead>
     <tbody>
