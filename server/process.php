@@ -16,6 +16,12 @@ $gamesTable = 'games';
 
 session_start();
 
+function handle_db() {
+    create_db($conn, $dbname);
+    create_table($conn, $userTable);
+    create_table($conn, $gamesTable);
+}
+
 function handleRequest() {
     global $servername, $username, $password;
     global $dbname, $userTable, $gamesTable;
@@ -28,10 +34,7 @@ function handleRequest() {
         return ["error" => "Connection failed: " . $conn->connect_error];
     }
 
-    include("create_db.php");
-    create_db($conn, $dbname);
-    create_table($conn, $userTable);
-    create_table($conn, $gamesTable);
+    handle_db();
 
     // Check if a specific key or parameter is set in the POST data
     if (isset($_POST['action'])) {
@@ -134,10 +137,18 @@ function handleRequest() {
                 $stmt->bind_param("iissi", $userid, $won, $startdatetime, $duration, $numturns);
                 if ($stmt->execute()) {
                     echo "Inserted game into the database.<br><br>";
+                    $stmt = $conn->prepare("UPDATE `users` SET gameswon = gameswon + ?, gamesplayed = gamesplayed + 1, timeplayedsec = timeplayedsec + ? WHERE id = ?");
+                    $duration_sec = strtotime($duration) - 1733353200;
+                    echo 'Seconds: ' . $duration_sec . '<br>';
+                    $stmt->bind_param("iii", $won, $duration_sec, $userid);
+                    $stmt->execute();
                 } else {
                     echo "Error: " . $stmt->error;
                 }
 
+                break;
+            
+            case 'none':
                 break;
                 
             default:
