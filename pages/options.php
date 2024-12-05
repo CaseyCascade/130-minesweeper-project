@@ -46,7 +46,7 @@
         <option value="default">Default</option>
         <option value="default">Option 1</option>
         <option value="default">Option 2</option>
-    </select> <br>
+    </select> <br><br>
 
     <button type="button" onclick="setInitParameters()">Play Game</button>
 
