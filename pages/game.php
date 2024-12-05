@@ -11,10 +11,9 @@
 </head>
 
 <body>
- 
 
-<h1>Game Page</h1>
-</body>
+<br>
+
 <div id ="resultPanel">
 </div>
 <div class="game-wrapper">
@@ -28,5 +27,7 @@
 <audio id="youWinSound" src="../data/assets/victory.mp3"></audio> 
 <audio id="music" src="../data/assets/kaboom.mp3"></audio> <!-- TODO Replace w/ Music File -->
 </html>
+
+</body>
 
 <script type="module" src="../src/game.js"></script>
