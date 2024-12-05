@@ -1,6 +1,5 @@
 <?php
-function create_server($conn)
-{
+function create_server($conn) {
     
 }
 ?>
