@@ -25,12 +25,15 @@ export class Grid {
             const row = [];
             for (let c = 0; c < this.cols; c++) {
                 const cell = new Cell(r, c);
+                console.log(`Creating cell at (${r}, ${c})`);
                 this.container.appendChild(cell.element); // Add the cell to the grid container
                 row.push(cell);
             }
             this.cells.push(row);
         }
+        console.log("Grid initialized with cells:", this.cells);
     }
+    
 
     // Append the grid to the DOM
     render(parentElement) {

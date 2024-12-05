@@ -3,17 +3,20 @@
 
 <head>
     <title>Minesweeper</title>
-</head>
-
-<body>
+    <link rel="stylesheet" href="../styles/game.css">
     <?php
     include 'header.html';
     ?>
+</head>
+
+<body>
+ 
 
 <h1>Game Page</h1>
 </body>
-
-<div id="grid"></div>
+<div class="game-wrapper">
+    <div id="gameContainer"></div>
+</div>
 
 </html>
 

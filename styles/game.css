@@ -1,0 +1,111 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Stack header and main content */
+    align-items: center;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+}
+
+/* Header styling */
+header {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+}
+
+/* Game wrapper container */
+.game-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Allows the game wrapper to expand to fill the remaining space */
+    width: 100%;
+    padding: 20px; /* Add spacing around the game content */
+}
+
+/* Grid container styling */
+#grid {
+    display: grid;
+    gap: 2px; /* Space between cells */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for better visual */
+    border-radius: 5px; /* Rounded corners for aesthetic */
+}
+
+/* Individual cell styling */
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333; /* Default text color */
+    border-radius: 2px; /* Subtle rounding for cells */
+    transition: background-color 0.2s ease, transform 0.1s ease; /* Smooth hover effects */
+}
+
+/* Hover effect for unrevealed cells */
+.cell:hover {
+    background-color: #ddd;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Revealed cell styling */
+.cell.revealed {
+    background-color: #ddd;
+    cursor: default;
+    color: #000;
+    text-shadow: 1px 1px #fff; /* Subtle text shadow for visibility */
+}
+
+/* Mine cell styling */
+.cell.mine {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #900;
+}
+
+/* Flagged cell styling */
+.cell.flag {
+    background-color: yellow;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Debug mode styling for mines */
+.cell.debug-mine {
+    background-color: lightcoral;
+    border: 1px dashed #000;
+}
+
+/* Footer (optional) */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #222;
+    color: #ddd;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 10;
+}
