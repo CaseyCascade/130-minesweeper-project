@@ -6,9 +6,9 @@ var gameOverSound = document.getElementById('gameOverSound');
 var youWinSound = document.getElementById('youWinSound');
 var music = document.getElementById('music'); 
 
-gameOverSound.volume = 0.3;
-youWinSound.volume = 0.3;
-music.volume = 0.15;
+if (gameOverSound) gameOverSound.volume = 0.3;
+if (youWinSound) youWinSound.volume = 0.3;
+if (music) music.volume = 0.15;
 
 export class Game {
     constructor(numMines, clearGrid, autoFirstMove, boardSize, style, theme) {
@@ -85,11 +85,11 @@ export class Game {
         let message;
         if (win_condition_met){
             youWinSound.play();
-            message = "You Win!";
+            message = "YOU WIN!!!";
         }
         else
         {
-            message = "Game Over";
+            message = "game over...";
             gameOverSound.play();
         }
         const textNode = document.createTextNode(message);
