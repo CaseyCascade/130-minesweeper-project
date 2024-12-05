@@ -1,5 +1,9 @@
 <?php
 
+// handle db before doing anything
+$_POST['action'] = 'none';
+include("../server/process.php");
+
 $host = 'localhost';
 $username = 'root';
 $password = '';
