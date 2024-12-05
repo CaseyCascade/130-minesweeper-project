@@ -3,15 +3,17 @@
 
 <head>
     <title>Sign Up</title>
-</head>
-
-<body>
     <?php
     include 'header.php';
     ?>
+</head>
+
+<body>
 
     <form action="../server/process.php" method="POST">
-    <h1>Sign Up Page</h1>
+        <br>
+        <h1>Sign Up Page</h1>
+        <br>
         <input type="hidden" name="action" value="signup">
 
         <label for="username">Username:</label>
@@ -28,10 +30,10 @@
 
         <button type="submit">Submit</button>
 
-    </form>
+        <br><br>
+        <p>Already have an account? <a href="login.php">Log in</a></p>
 
-    <br>
-    <p>Already have an account? <a href="login.php">Log in</a></p>
+    </form>
 
 </body>
 

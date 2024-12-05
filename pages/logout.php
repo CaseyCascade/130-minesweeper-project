@@ -10,12 +10,12 @@ session_destroy();
 
 <head>
     <title>Index</title>
-</head>
-
-<body>
     <?php
     include 'header.php';
     ?>
+</head>
+
+<body>
 
 <p>Successfully logged out!</p>
 <a href="index.php">Return to Homepage</a>

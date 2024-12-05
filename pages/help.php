@@ -3,13 +3,12 @@
 
 <head>
     <title>Help</title>
-</head>
-
-<body>
-
     <?php
     include 'header.php';
     ?>
+</head>
+
+<body>
 
     <h1>Help Page</h1>
     

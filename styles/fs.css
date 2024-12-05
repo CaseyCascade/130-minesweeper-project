@@ -36,10 +36,16 @@ footer a:hover { text-decoration: underline; }
     main { padding: 10px; }
 }
 
-form {
+.centerbody {
 
     width: 25vw;
     margin: auto;
+
+    label {
+
+        text-align: center;
+
+    }
 
 }
 

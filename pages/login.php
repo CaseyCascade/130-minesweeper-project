@@ -3,16 +3,17 @@
 
 <head>
     <title>Login</title>
-    
-</head>
-
-<body>
     <?php
     include 'header.php';
     ?>
+</head>
+
+<body>
 
     <form action="../server/process.php" method="POST">
-    <h1>Login Page</h1>
+        <br>
+        <h1>Login Page</h1>
+        <br>
         <input type="hidden" name="action" value="login">
 
         <label for="username">Username:</label>

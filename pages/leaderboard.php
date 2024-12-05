@@ -77,12 +77,12 @@ function echo_username() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
-</head>
-
-<body>
     <?php
     include 'header.php';
     ?>
+</head>
+
+<body>
 
 <h1>Leaderboard</h1>
 <table>

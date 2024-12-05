@@ -3,12 +3,12 @@
 
 <head>
     <title>Index</title>
-</head>
-
-<body>
     <?php
     include 'header.php';
     ?>
+</head>
+
+<body>
 
 <h1>Home Page</h1>
 </body>

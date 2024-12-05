@@ -3,12 +3,12 @@
 
 <head>
     <title>Game Options</title>
-</head>
-
-<body>
     <?php
     include 'header.php';
     ?>
+</head>
+
+<body>
     
 <h1>Game Options</h1>
 
