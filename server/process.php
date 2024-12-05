@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="../styles/header.css">
 <link rel="stylesheet" href="../styles/fs.css">
-<body>
+<body class="msgbody">
+<div class="centermsg">
 <?php
 # Server Globals # Idk how exactly this works without localhost so feel free to change the credentials 
 
@@ -90,14 +91,13 @@ function handleRequest() {
 
                 if ($result->num_rows == 1) {
                     $user = $result->fetch_assoc();
-                    echo $user['passhash'] . "<br>";
                     if (password_verify($password, $user['passhash'])) {
                         $_SESSION['userid'] = $user['id'];
                         $_SESSION['username'] = $user['username'];
                         header("Location: ../pages/index.php");
                         exit();
                     } else {
-                        echo "Invalid Credentials.<br>";
+                        echo "Invalid Credentials.<br><br>";
                         echo "<a href='../pages/login.php'>Return to Login</a>";
                     }
                 } else {
@@ -167,5 +167,5 @@ function handleRequest() {
 handleRequest();  
 
 ?>
-
+</div>
 </body>
