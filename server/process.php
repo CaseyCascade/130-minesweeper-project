@@ -14,9 +14,10 @@ $dbname = 'minesweeper';
 $userTable = 'users';
 $gamesTable = 'games';
 
-session_start();
+if (!isset($_SESSION)) session_start();
 
 function handle_db($conn) {
+    global $dbname, $userTable, $gamesTable;
     include("create_db.php");
     create_db($conn, $dbname);
     create_table($conn, $userTable);
@@ -25,7 +26,6 @@ function handle_db($conn) {
 
 function handleRequest() {
     global $servername, $username, $password;
-    global $dbname, $userTable, $gamesTable;
 
     // Establish a database connection
     $conn = new mysqli($servername, $username, $password);

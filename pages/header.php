@@ -18,7 +18,7 @@
                 <a href="options.php">Play Game</a>
                 <a href="leaderboard.php">Leaderboard</a>
 <?php
-    session_start();
+    if (!isset($_SESSION)) session_start();
     if (!isset($_SESSION['username'])) {
         echo '<a href="login.php">Login</a>';
         echo '<a href="signup.php">Sign Up</a>';
