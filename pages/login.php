@@ -11,9 +11,7 @@
 <body>
 
     <form action="../server/process.php" method="POST">
-        <br>
-        <h1>Login Page</h1>
-        <br>
+        <h1>Login</h1>
         <input type="hidden" name="action" value="login">
 
         <label for="username">Username:</label>
