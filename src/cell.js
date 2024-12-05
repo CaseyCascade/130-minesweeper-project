@@ -20,18 +20,17 @@ export class Cell {
             cellElement.classList.add('debug-mine');
         }
     
-        cellElement.addEventListener('click', () => this.reveal());
+        cellElement.addEventListener('click', () => {
+            this.grid.game.update();
+            this.reveal();
+        });
         cellElement.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             this.toggleFlag();
+            this.grid.game.update();
         });
     
         return cellElement;
-    }
-
-    gameOver()
-    {
-        this.grid.endGame(false);
     }
     
     reveal() {
@@ -41,7 +40,7 @@ export class Cell {
         this.element.classList.add('revealed');
 
         if (this.isMine) {
-             this.gameOver();   
+             this.grid.game.gameOver();   
         } else if (this.adjacentMines > 0) {
             this.element.textContent = this.adjacentMines;
         } else {
@@ -57,11 +56,11 @@ export class Cell {
 
         if (this.isFlagged)
         {
-            this.grid.flagCount--;
+            this.grid.numFlags--;
         } 
         else 
         {
-            this.grid.flagCount++;
+            this.grid.numFlags++;
         }
         this.isFlagged = !this.isFlagged;
         this.element.classList.toggle('flag', this.isFlagged);

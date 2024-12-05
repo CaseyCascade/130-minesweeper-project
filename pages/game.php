@@ -15,7 +15,9 @@
 <h1>Game Page</h1>
 </body>
 <div class="game-wrapper">
+    <div id="timer">0:00</div>
     <div id="gameContainer"></div>
+    <div id="infoPanel"></div>
 </div>
 
 </html>

@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Stack header and main content */
+    flex-direction: column; /* Stack header, timer, and game content */
     align-items: center;
     background-color: #f0f0f0;
     min-height: 100vh;
@@ -23,12 +23,20 @@ header {
     z-index: 10;
 }
 
+/* Timer styling */
+#timer {
+    font-size: 2rem;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+
 /* Game wrapper container */
 .game-wrapper {
-    display: flex;
+    display: flex; /* Use flex to position grid and info panel side by side */
     justify-content: center;
-    align-items: center;
-    flex-grow: 1; /* Allows the game wrapper to expand to fill the remaining space */
+    align-items: flex-start; /* Align to the top of the container */
+    gap: 20px; /* Space between grid and info panel */
     width: 100%;
     padding: 20px; /* Add spacing around the game content */
 }
@@ -42,6 +50,21 @@ header {
     padding: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for better visual */
     border-radius: 5px; /* Rounded corners for aesthetic */
+}
+
+/* Info panel styling */
+#infoPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 200px; /* Fixed width for the info panel */
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
 }
 
 /* Individual cell styling */
@@ -84,12 +107,6 @@ header {
     border: 2px solid #900;
 }
 
-.cell.debug-mine {
-    background-color: lightcoral; /* Use a distinct color for debug mines */
-    border: 1px dashed #000;
-}
-
-
 /* Flagged cell styling */
 .cell.flag {
     background-color: yellow;
@@ -100,11 +117,11 @@ header {
 
 /* Debug mode styling for mines */
 .cell.debug-mine {
-    background-color: lightcoral;
+    background-color: lightcoral; /* Use a distinct color for debug mines */
     border: 1px dashed #000;
 }
 
-/* Footer (optional) */
+/* Footer styling */
 footer {
     width: 100%;
     text-align: center;

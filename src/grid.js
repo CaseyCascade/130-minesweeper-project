@@ -1,13 +1,13 @@
 import {Cell} from './cell.js'; 
 
 export class Grid {
-    constructor(rows, cols) {
+    constructor(rows, cols, game) {
         this.rows = rows;
         this.cols = cols;
         this.cells = []; // 2D array to store Cell instances
-        this.flagCount = 0; 
+        this.numFlags = 0; 
         this.container = this.createContainer(); // DOM container for the grid
-        this.gameOver = false;
+        this.game = game; 
     }
 
     // Create the grid container
@@ -21,19 +21,37 @@ export class Grid {
         return container;
     }
 
+    autoFirstMove() //FIXME This softlocks the game somehow
+    {
+        let moveMade = false;
+        while (!moveMade) {
+            const r = Math.floor(Math.random() * this.rows);
+            const c = Math.floor(Math.random() * this.cols);
+            const cell = this.cells[r][c];
+            if (!cell.isMine && cell.adjacentMines == 0) { // HACK Unsure if we should allow for it to pick spaces adjacent to mines
+                cell.reveal();
+                moveMade = true; 
+            }
+        }
+    }
+
     // Initialize the grid with Cell instances
     initializeGrid() {
         for (let r = 0; r < this.rows; r++) {
             const row = [];
             for (let c = 0; c < this.cols; c++) {
                 const cell = new Cell(r, c, this);
-                console.log(`Creating cell at (${r}, ${c})`);
                 this.container.appendChild(cell.element); // Add the cell to the grid container
                 row.push(cell);
             }
             this.cells.push(row);
         }
         console.log("Grid initialized with cells:", this.cells);
+
+        if (this.game.autoFirstMove)
+        {
+            this.autoFirstMove(); 
+        }
     }
     
 
@@ -42,7 +60,7 @@ export class Grid {
         parentElement.appendChild(this.container);
     }
 
-    endGame(isVictory){
+    revealGrid(){
         this.cells.forEach((row) => { // Loop through each row
             row.forEach((cell) => { // Loop through each cell in the row
                 cell.isRevealed = true;
@@ -56,18 +74,6 @@ export class Grid {
                 }
             });
         });
-
-        if (isVictory){
-            // TODO Victory Stuff
-        }
-        else {
-            // TODO Game Over Stuff
-        }
-    }
-    
-    checkWinCondition()
-    {
-        
     }
 
     getNeighbors(row, col) {
