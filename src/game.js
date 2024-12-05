@@ -1,11 +1,11 @@
 import {Grid} from './grid.js';
 
-var numMines; 
-var clearGrid;
-var autoFirstMove; 
-var boardSize; 
-var style; 
-var theme; 
+    var numMines; 
+    var clearGrid;
+    var autoFirstMove; 
+    var boardSize; 
+    var style; 
+    var theme; 
 
 function getInitParameters()
 {

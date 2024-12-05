@@ -28,22 +28,10 @@ export class Cell {
     
         return cellElement;
     }
-    
-    gameOver() {
-        this.element.classList.add('mine'); // Highlight the current cell as a mine
-        this.grid.cells.forEach((row) => { // Loop through each row
-            row.forEach((cell) => { // Loop through each cell in the row
-                cell.isRevealed = true;
-                cell.element.classList.add('revealed', 'disabled'); // Reveal and disable each cell
-                if (cell.isMine) {
-                    cell.element.classList.add('mine'); // Highlight all mines
-                } else if (cell.adjacentMines > 0) {
-                    cell.element.textContent = cell.adjacentMines; // Display adjacent mine count
-                } else {
-                    cell.element.textContent = ''; // Empty cell
-                }
-            });
-        });
+
+    gameOver()
+    {
+        this.grid.endGame(false);
     }
     
     reveal() {
@@ -53,7 +41,7 @@ export class Cell {
         this.element.classList.add('revealed');
 
         if (this.isMine) {
-             this.gameOver(); 
+             this.gameOver();   
         } else if (this.adjacentMines > 0) {
             this.element.textContent = this.adjacentMines;
         } else {

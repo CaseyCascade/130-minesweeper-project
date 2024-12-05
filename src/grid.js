@@ -42,6 +42,34 @@ export class Grid {
         parentElement.appendChild(this.container);
     }
 
+    endGame(isVictory){
+        this.cells.forEach((row) => { // Loop through each row
+            row.forEach((cell) => { // Loop through each cell in the row
+                cell.isRevealed = true;
+                cell.element.classList.add('revealed', 'disabled'); // Reveal and disable each cell
+                if (cell.isMine) {
+                    cell.element.classList.add('mine'); // Highlight all mines
+                } else if (cell.adjacentMines > 0) {
+                    cell.element.textContent = cell.adjacentMines; // Display adjacent mine count
+                } else {
+                    cell.element.textContent = ''; // Empty cell
+                }
+            });
+        });
+
+        if (isVictory){
+            // TODO Victory Stuff
+        }
+        else {
+            // TODO Game Over Stuff
+        }
+    }
+    
+    checkWinCondition()
+    {
+        
+    }
+
     getNeighbors(row, col) {
         const neighbors = [];
         const directions = [
