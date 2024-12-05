@@ -24,7 +24,7 @@ export class Grid {
         for (let r = 0; r < this.rows; r++) {
             const row = [];
             for (let c = 0; c < this.cols; c++) {
-                const cell = new Cell(r, c);
+                const cell = new Cell(r, c, this);
                 console.log(`Creating cell at (${r}, ${c})`);
                 this.container.appendChild(cell.element); // Add the cell to the grid container
                 row.push(cell);
@@ -40,6 +40,30 @@ export class Grid {
         parentElement.appendChild(this.container);
     }
 
+    getNeighbors(row, col) {
+        const neighbors = [];
+        const directions = [
+            [-1, -1], [-1, 0], [-1, 1], // Top-left, Top, Top-right
+            [0, -1],         [0, 1],    // Left, Right
+            [1, -1], [1, 0], [1, 1],    // Bottom-left, Bottom, Bottom-right
+        ];
+    
+        directions.forEach(([dr, dc]) => {
+            const neighborRow = row + dr;
+            const neighborCol = col + dc;
+    
+            // Check if neighbor is within bounds
+            if (
+                neighborRow >= 0 && neighborRow < this.rows &&
+                neighborCol >= 0 && neighborCol < this.cols
+            ) {
+                neighbors.push(this.cells[neighborRow][neighborCol]);
+            }
+        });
+    
+        return neighbors;
+    }
+    
     // Set mines randomly on the grid
     placeMines(numMines) {
         let minesPlaced = 0;
@@ -50,6 +74,10 @@ export class Grid {
             if (!cell.isMine) {
                 cell.setMine();
                 minesPlaced++;
+                // Increment mine count for all neighbors
+                this.getNeighbors(r, c).forEach(neighbor => {
+                    neighbor.incrementAdjacentMines();
+                });
             }
         }
     }
