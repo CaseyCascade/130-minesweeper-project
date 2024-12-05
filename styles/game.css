@@ -84,6 +84,12 @@ header {
     border: 2px solid #900;
 }
 
+.cell.debug-mine {
+    background-color: lightcoral; /* Use a distinct color for debug mines */
+    border: 1px dashed #000;
+}
+
+
 /* Flagged cell styling */
 .cell.flag {
     background-color: yellow;

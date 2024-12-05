@@ -55,7 +55,7 @@ function initializeGame()
     console.log("Grid created with size:", grid.rows, "x", grid.cols);
     grid.initializeGrid();        
     console.log("Grid initialized");
-    grid.placeMines(parseInt(numMines, 10));
+    grid.placeMines(numMines);
     console.log("Mines placed");
     const gameContainer = document.getElementById("gameContainer");
     if (!gameContainer) {

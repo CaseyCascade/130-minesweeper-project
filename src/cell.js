@@ -1,3 +1,4 @@
+const DEBUG_MODE = true;
 export class Cell {
     constructor(row, col) {
         this.row = row;
@@ -12,13 +13,21 @@ export class Cell {
     createElement() {
         const cellElement = document.createElement('div');
         cellElement.className = 'cell';
+    
+        // Show mines in debug mode
+        if (DEBUG_MODE && this.isMine) {
+            cellElement.classList.add('debug-mine');
+        }
+    
         cellElement.addEventListener('click', () => this.reveal());
         cellElement.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             this.toggleFlag();
         });
+    
         return cellElement;
     }
+    
 
     reveal() {
         if (this.isRevealed || this.isFlagged) return;
@@ -28,7 +37,7 @@ export class Cell {
 
         if (this.isMine) {
             this.element.classList.add('mine');
-            alert("Game Over!");
+            alert("Game Over!"); //TODO Post game results and add option to restart
         } else if (this.adjacentMines > 0) {
             this.element.textContent = this.adjacentMines;
         } else {
@@ -45,7 +54,11 @@ export class Cell {
 
     setMine() {
         this.isMine = true; 
+        if (DEBUG_MODE) {
+            this.element.classList.add('debug-mine');
+        }
     }
+    
 
     incrementAdjacentMines() {
         this.adjacentMines++;
