@@ -2,6 +2,9 @@ import {Grid} from './grid.js';
 
 var resultPanel = document.getElementById("resultPanel");
 var game;
+var gameOverSound = document.getElementById('gameOverSound');
+var youWinSound = document.getElementById('youWinSound');
+var music = document.getElementById('music'); 
 export class Game {
     constructor(numMines, clearGrid, autoFirstMove, boardSize, style, theme) {
         this.numMines = numMines; 
@@ -44,7 +47,8 @@ export class Game {
         {
             this.grid.autoFirstMove(); 
         }
-        this.startTimer();
+        this.startTimer(); 
+        // TODO put music.play() here and loop it somehow. Pausing should be handled in endGame()
     }
 
     checkForWinCondition() {
@@ -68,27 +72,31 @@ export class Game {
     
     
     
-    endGame(win_condition_met)
+    endGame(win_condition_met) 
     {
+        music.pause(); 
         this.grid.revealGrid();
         this.stopTimer(); 
         let message;
         if (win_condition_met){
+            youWinSound.play();
             message = "You Win!";
         }
-        else message = "Game Over";
-
+        else
+        {
+            message = "Game Over";
+            gameOverSound.play();
+        }
         const textNode = document.createTextNode(message);
         resultPanel.appendChild(textNode);
 
-        // Optionally, style the message differently for win/lose
         resultPanel.style.color = win_condition_met ? "green" : "red";
     }
 
     update()
     {
         this.updateInfoPanel(); 
-        if (this.checkForWinCondition()) this.endGame(true); //TODO Additional victory screen logic
+        if (this.checkForWinCondition()) this.endGame(true); // Game ends here or in cell when a mine is hit
     }
 
     updateInfoPanel()
@@ -119,9 +127,6 @@ export class Game {
         this.timerInterval = null;
     }
 }
-    
-// Globals
- 
 
 function getInitParameters(game)
 {
