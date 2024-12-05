@@ -59,7 +59,7 @@ export class Game {
             });
         });
     }
-
+    
     gameOver()
     {
         this.grid.revealGrid();
@@ -98,13 +98,6 @@ export class Game {
     stopTimer() {
         clearInterval(this.timerInterval);
         this.timerInterval = null;
-    }
-
-    // Function to reset the timer
-    resetTimer() { //TODO Probably don't need this 
-        stopTimer();
-        this.secondsElapsed = 0;
-        updateTimerDisplay();
     }
 }
     
