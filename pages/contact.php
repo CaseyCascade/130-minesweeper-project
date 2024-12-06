@@ -18,7 +18,7 @@
             Hi, I'm Bravo! 
             I made a game called <a href="https://store.steampowered.com/app/1626370/Raybound/">Raybound</a>, and I'm working on a sequel called <a href="https://www.youtube.com/watch?v=ZNIqfSJGSmg">Raybound: Subnovian Legend</a> :3
             </p>
-            <p>
+            <p class="description">
             I worked a lot on the backend, php and mysql can be a headache sometimes :<
             </p>
             <a href="mailto:jluisbg10@gmail.com" class="email">jluisbg10@gmail.com</a>
@@ -31,7 +31,7 @@
             <h2>Mattheau Casey <span class="pronouns">(he/him)</span></h2>
             <p class="description">
                 Hello! I'm Casey. As of Spring 2025 I'll be a graduate from Fresno State with a major in Computer Science and a Cybersecurity certification. I did a lot of the client side work and game logic on this website.</p>
-             <p>   I'm a hobbyist game/software developer looking to expand my portolio soon. You can check out my <a href="https://github.com/CaseyCascade">github</a> here!
+             <p class="description">   I'm a hobbyist game/software developer looking to expand my portolio soon. You can check out my <a href="https://github.com/CaseyCascade">github</a> here!
             </p>
             <a href="mailto:mattheauryan@gmail.com" class="email">mattheauryan@gmail.com</a>
             <a href="mailto:caseycascade@mail.fresnostate.edu" class="email">caseycascade@mail.fresnostate.edu</a>
