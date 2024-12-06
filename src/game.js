@@ -65,7 +65,7 @@ export class Game {
         // YYYY-MM-DD hh-mm-ss
         this.results_startdatetime = utils.getCurrentDateTime();
         // int, number of turns
-        this.results_numturns = 0;
+        this.results_numturns = 1;
     }
 
     setStyles()
@@ -155,18 +155,21 @@ export class Game {
         this.grid.revealGrid();
         this.stopTimer();
         let message;
+        let extrahtml = "<p>Your game has been added to the <a href=\"leaderboard.php?self\">leaderboard</a>.</p>";
+        let extrahtml2 = "<p><form action=\"options.php\"><button type=\"submit\">Return</button></form></p>";
         if (win_condition_met) {
-            message = "YOU WIN!!!";
+            message = "<p class=\"r-win\">YOU WIN!!!</p>";
             youWinSound.play();
         }
         else {
-            message = "GAME OVER...";
+            message = "<p class=\"r-lose\">GAME OVER...</p>";
             gameOverSound.play();
         }
-        const textNode = document.createTextNode(message);
-        resultPanel.appendChild(textNode);
+        resultPanel.innerHTML += message;
+        resultPanel.innerHTML += extrahtml;
+        resultPanel.innerHTML += extrahtml2;
 
-        resultPanel.style.color = win_condition_met ? "green" : "red";
+        //resultPanel.style.color = win_condition_met ? "green" : "red";
     }
 
     update() {

@@ -23,7 +23,7 @@
         <input type="password" id="password" name="password">
         <br><br>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Log In</button>
 
         <br><br>
         <p>Don't have an account? <a href="signup.php">Sign up</a></p>

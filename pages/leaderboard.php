@@ -21,6 +21,10 @@ $sortColumn = isset($_GET['sortColumn']) ? $_GET['sortColumn'] : 'gameswon';
 $sortOrder = isset($_GET['sortOrder']) ? $_GET['sortOrder'] : 'DESC';
 $playerId = isset($_GET['playerId']) ? (int)$_GET['playerId'] : null;
 
+if (isset($_GET['self'])) {
+    $playerId = $_SESSION['userid'];
+}
+
 // Set default sorting
 $validColumns = ['username', 'gameswon', 'timeplayedsec', 'gamesplayed'];
 if (!in_array($sortColumn, $validColumns)) {

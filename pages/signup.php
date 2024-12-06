@@ -26,7 +26,7 @@
         <input type="password" id="confpassword" name="confpassword" required>
         <br><br>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Sign Up</button>
 
         <br><br>
         <p>Already have an account? <a href="login.php">Log in</a></p>

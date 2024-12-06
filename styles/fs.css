@@ -262,9 +262,6 @@ input[type="number"] {
 }
 
 #resultPanel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     background: #f9f9f9;
     border: 2px solid #ccc;
@@ -272,22 +269,20 @@ input[type="number"] {
     padding: 20px;
     margin: 20px auto;
     max-width: 400px;
-    font-size: 1.5rem;
-    font-weight: bold;
     color: #333;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#resultPanel.win {
+.r-win {
     color: green;
-    border-color: green;
-    background: #eaffea;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
-#resultPanel.lose {
+.r-lose {
     color: red;
-    border-color: red;
-    background: #ffeaea;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 #resultPanel:empty {
