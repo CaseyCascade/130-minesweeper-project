@@ -101,7 +101,7 @@ function handleRequest() {
                     if (password_verify($password, $user['passhash'])) {
                         $_SESSION['userid'] = $user['id'];
                         $_SESSION['username'] = $user['username'];
-                        header("Location: ../pages/index.php");
+                        header("Location: ../pages/options.php");
                         exit();
                     } else {
                         echo "Invalid Credentials.<br><br>";
