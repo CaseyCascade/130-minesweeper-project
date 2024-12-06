@@ -1,3 +1,14 @@
+<?php
+if (!isset($_SESSION)) session_start();
+
+if (isset($_SESSION['visited'])) {
+    header("Location: options.php");
+    exit();
+} else {
+    $_SESSION['visited'] = true;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 

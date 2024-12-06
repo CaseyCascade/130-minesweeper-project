@@ -16,7 +16,7 @@ session_destroy();
 </head>
 
 <body>
-<main class="centered">
+<main class="centered-thin">
 <h1>Successfully logged out!</h1>
 <p>We will see you in another time...</p>
 <a href="index.php">Return to Homepage</a>

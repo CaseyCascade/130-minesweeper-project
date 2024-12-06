@@ -1,3 +1,23 @@
+<?php
+
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['userid'])) {
+    echo '<link rel="stylesheet" href="../styles/header.css">';
+    echo '<link rel="stylesheet" href="../styles/fs.css">';
+    echo '<body class="msgbody">';
+    echo '<div class="centermsg">';
+    echo '<p>You must be logged in before you can play...</p>';
+    echo '<p><form action="login.php"><button type="submit">Go To Login Page</button></form></p>';
+    echo '</div>';
+    echo '</body>';
+    die();
+}
+if (isset($_SESSION['visited'])) {
+    unset($_SESSION['visited']);
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
