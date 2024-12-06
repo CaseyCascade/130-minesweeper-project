@@ -1,5 +1,5 @@
-#Bravo
-##Pages
+# Bravo
+## Pages
 - index.php
 - login.php
 - logout.php
@@ -8,33 +8,33 @@
 - contact.php
 - footer.php
 
-##Server Side
+## Server Side
 - create_db.php
 - create_server.php
 - process.php
 
-##Debug
+## Debug
 - deprecated_leaderboard_upload.php
 - deprecated_leaderboard_view.php
 - users_upload.php
 - users_view.php
 
-##Client Side
+## Client Side
 - utils.js
 
-#Casey
-##Pages
+# Casey
+## Pages
 - header.php
 - help.php
 - options.php
 - game.php
 
-##Client Side
+## Client Side
 - cell.js
 - grid.js 
 - game.js
 
-##Styles
+## Styles
 - fs.css
 - game.css
 - dark.css
