@@ -15,10 +15,15 @@ if (isset($_SESSION['visited'])) {
 <head>
     <title>Minesweeper</title>
     
-    <link rel="stylesheet" href="../styles/game.css">
+    
+</head>
     <?php
     include 'header.php';
     ?>
+
+    <link rel="stylesheet" href="../styles/game.css">
+    <link id="colorTheme" rel="stylesheet" href="">
+    <link id="boardTheme" rel="stylesheet" href="">
 </head>
 
 <body>

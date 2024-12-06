@@ -1,0 +1,58 @@
+#grid {
+    display: grid;
+    gap: 2px; /* Space between cells */
+    border: 2px solid #00ff00;
+    background-color: #001a00;
+    padding: 10px;
+    box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00 inset;
+    border-radius: 5px;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #003300;
+    border: 1px solid #00ff00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+    border-radius: 2px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.cell:hover {
+    background-color: #004d00;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.cell.revealed {
+    background-color: #002600;
+    color: #00ff00;
+    text-shadow: none;
+}
+
+.cell.mine {
+    background-color: #ff0000;
+    color: #ffffff;
+    border: 2px solid #ff0000;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+.cell.flag {
+    background-color: #000000;
+    color: #00ff00;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+.cell.debug-mine {
+    background-color: #660000;
+    border: 1px dashed #00ff00;
+}
+

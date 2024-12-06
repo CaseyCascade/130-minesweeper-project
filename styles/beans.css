@@ -1,0 +1,73 @@
+#grid {
+    display: grid;
+    gap: 2px;
+    border: 2px solid #d2691e;
+    background-color: #ffe4b5;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #cd853f;
+    background-image: url('../data/assets/bean.png');
+    background-size: cover;
+    border: 1px solid #8b4513;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fffaf0;
+    border-radius: 2px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.cell:hover {
+    background-color: #deb887;
+    background-image: url('../data/assets/bean.png');
+    transform: scale(1.1);
+}
+
+.cell.revealed {
+    background-color: #f5deb3;
+    background-image: url('../data/assets/beanDim.png');
+    color: #8b4513;
+}
+
+.cell.mine {
+    background-color: #800000;
+    background-image: none;
+    color: #fff;
+    border: 2px solid #8b0000;
+}
+
+.cell.flag {
+    background-color: #fff8dc;
+    background-image: none;
+    color: #8b4513;
+    font-weight: bold;
+}
+
+.cell.debug-mine {
+    background-color: #a0522d;
+    background-image: none;
+    border: 1px dashed #d2691e;
+}
+
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background-color: #fdf5e6;
+    color: #8b4513;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: #8b4513;
+}

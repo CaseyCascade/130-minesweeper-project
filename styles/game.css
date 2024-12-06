@@ -12,8 +12,6 @@ body {
 header {
     width: 100%;
     box-sizing: border-box;
-    background-color: #333;
-    color: white;
     text-align: center;
     padding: 15px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

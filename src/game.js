@@ -26,6 +26,7 @@ export class Game {
     }
 
     start() {
+        this.setStyles(); 
         resultPanel.innerHTML = "";
         if (this.boardSize == "small") this.grid = new Grid(8, 8, this);
         else if (this.boardSize == "medium") this.grid = new Grid(16, 16, this);
@@ -65,6 +66,21 @@ export class Game {
         this.results_startdatetime = utils.getCurrentDateTime();
         // int, number of turns
         this.results_numturns = 0;
+    }
+
+    setStyles()
+    {
+        var basePath = "../styles/"; 
+        const boardTheme = document.getElementById('boardTheme');
+        const colorTheme = document.getElementById('colorTheme');
+
+        console.log(basePath + this.style + ".css");
+        console.log(basePath + this.theme + ".css");
+
+        if (this.style != "default")
+            boardTheme.href = basePath + this.style + ".css";
+        if (this.theme != "default")
+            colorTheme.href = basePath + this.theme + ".css";
     }
 
     saveResults(won) {

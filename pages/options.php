@@ -54,18 +54,18 @@ if (isset($_SESSION['visited'])) {
         <option value="large">Large (30x16)</option>
     </select> <br>
 
-    <label for="style">Board Color / Texture:</label>
+    <label for="style">Board Theme:</label>
     <select id="style" required> 
         <option value="default">Default</option>
-        <option value="default">Option 1</option>
-        <option value="default">Option 2</option>
+        <option value="hackerman">Hackerman</option>
+        <option value="beans">Beans</option>
     </select> <br>
 
     <label for="theme">Color Theme:<label>
     <select id="theme" required> 
         <option value="default">Default</option>
-        <option value="default">Option 1</option>
-        <option value="default">Option 2</option>
+        <option value="dark">Dark</option>
+        <option value="candyland">Candyland</option>
     </select> <br><br>
 
     <button type="button" onclick="setInitParameters()">Play Game</button>
