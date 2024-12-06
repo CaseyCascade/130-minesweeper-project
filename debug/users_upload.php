@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->execute()) {
         // Update user's gameswon and gamesplayed
         $stmt = $conn->prepare("UPDATE `users` SET gameswon = gameswon + ?, gamesplayed = gamesplayed + 1, timeplayedsec = timeplayedsec + ? WHERE id = ?");
-        $duration_sec = strtotime($duration) - 1733353200;
+        $duration_sec = strtotime($duration) - 1733439600;
         echo 'Seconds: ' . $duration_sec . '<br>';
         $stmt->bind_param("iii", $won, $duration_sec, $userid);
         $stmt->execute();

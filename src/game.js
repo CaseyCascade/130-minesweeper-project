@@ -6,9 +6,9 @@ var gameOverSound = document.getElementById('gameOverSound');
 var youWinSound = document.getElementById('youWinSound');
 var music = document.getElementById('music'); 
 
-if (gameOverSound) gameOverSound.volume = 0.3;
-if (youWinSound) youWinSound.volume = 0.3;
-if (music) music.volume = 0.15;
+if (gameOverSound) gameOverSound.volume = 0.5;
+if (youWinSound) youWinSound.volume = 0.5;
+if (music) music.volume = 0.2;
 
 export class Game {
     constructor(numMines, clearGrid, autoFirstMove, boardSize, style, theme) {
@@ -54,6 +54,7 @@ export class Game {
         }
         this.startTimer(); 
         // TODO put music.play() here and loop it somehow. Pausing should be handled in endGame()
+        music.play();
     }
 
     checkForWinCondition() {
