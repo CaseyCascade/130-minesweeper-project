@@ -16,7 +16,7 @@
             <h2>J. L. Bravo <span class="pronouns">(they/them)</span></h2>
             <p class="description">
             Hi, I'm Bravo! 
-            I made a game called <a href="https://store.steampowered.com/app/1626370/Raybound/">Raybound</a>, and I'm working on a sequel called <a href="https://www.youtube.com/watch?v=ZNIqfSJGSmg">Raybound: Subnovian Legend</a>!!!
+            I made a game called <a href="https://store.steampowered.com/app/1626370/Raybound/">Raybound</a>, and I'm working on a sequel called <a href="https://www.youtube.com/watch?v=ZNIqfSJGSmg">Raybound: Subnovian Legend</a>!
             </p>
             <p class="description">
             I worked a lot on the backend, php and mysql can be a headache sometimes :<
