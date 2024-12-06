@@ -1,10 +1,10 @@
-import {Grid} from './grid.js';
+import { Grid } from './grid.js';
 
 var resultPanel = document.getElementById("resultPanel");
 var game;
 var gameOverSound = document.getElementById('gameOverSound');
 var youWinSound = document.getElementById('youWinSound');
-var music = document.getElementById('music'); 
+var music = document.getElementById('music');
 
 if (gameOverSound) gameOverSound.volume = 0.5;
 if (youWinSound) youWinSound.volume = 0.5;
@@ -12,20 +12,19 @@ if (music) music.volume = 0.2;
 
 export class Game {
     constructor(numMines, clearGrid, autoFirstMove, boardSize, style, theme) {
-        this.numMines = numMines; 
+        this.numMines = numMines;
         this.clearGrid = clearGrid;
         this.autoFirstMove = autoFirstMove;
-        this.boardSize = boardSize; 
-        this.style = style; 
+        this.boardSize = boardSize;
+        this.style = style;
         this.theme = theme;
         this.grid;
         this.timerInterval;
         this.secondsElapsed = 0;
-        this.start(); 
+        this.start();
     }
 
-    start()
-    {
+    start() {
         resultPanel.innerHTML = "";
         if (this.boardSize == "small") this.grid = new Grid(8, 8, this);
         else if (this.boardSize == "medium") this.grid = new Grid(16, 16, this);
@@ -35,7 +34,7 @@ export class Game {
             return;
         }
         console.log("Grid created with size:", this.grid.rows, "x", this.grid.cols);
-        this.grid.initializeGrid();        
+        this.grid.initializeGrid();
         console.log("Grid initialized");
         this.grid.placeMines(this.numMines);
         console.log("Mines placed");
@@ -44,15 +43,14 @@ export class Game {
             console.error("Error: #gameContainer element not found");
             return;
         }
-        this.grid.render(gameContainer);  
+        this.grid.render(gameContainer);
         console.log("Grid rendered to #gameContainer");
         console.log("Clear Grid: " + this.clearGrid);
         this.updateInfoPanel();
-        if (this.autoFirstMove)
-        {
-            this.grid.autoFirstMove(); 
+        if (this.autoFirstMove) {
+            this.grid.autoFirstMove();
         }
-        this.startTimer(); 
+        this.startTimer();
         // TODO put music.play() here and loop it somehow. Pausing should be handled in endGame()
         music.play();
     }
@@ -75,21 +73,19 @@ export class Game {
         }
         return true; // If all conditions are met, return true
     }
-    
-    
-    
-    endGame(win_condition_met) 
-    {
-        music.pause(); 
+
+
+
+    endGame(win_condition_met) {
+        music.pause();
         this.grid.revealGrid();
-        this.stopTimer(); 
+        this.stopTimer();
         let message;
-        if (win_condition_met){
-            youWinSound.play();
+        if (win_condition_met) {
             message = "YOU WIN!!!";
+            youWinSound.play();
         }
-        else
-        {
+        else {
             message = "GAME OVER...";
             gameOverSound.play();
         }
@@ -99,15 +95,13 @@ export class Game {
         resultPanel.style.color = win_condition_met ? "green" : "red";
     }
 
-    update()
-    {
-        this.updateInfoPanel(); 
+    update() {
+        this.updateInfoPanel();
         if (this.checkForWinCondition()) this.endGame(true); // Game ends here or in cell when a mine is hit
     }
 
-    updateInfoPanel()
-    {
-        let infoPanel = document.getElementById("infoPanel"); 
+    updateInfoPanel() {
+        let infoPanel = document.getElementById("infoPanel");
         infoPanel.textContent = `Mines: ${this.numMines - this.grid.numFlags}`;
     }
 
@@ -134,8 +128,7 @@ export class Game {
     }
 }
 
-function getInitParameters(game)
-{
+function getInitParameters(game) {
     const params = new URLSearchParams(window.location.search);
     // Extract the variables
     let numMines = parseInt(params.get("numMines"));
@@ -144,45 +137,42 @@ function getInitParameters(game)
     let boardSize = params.get("boardSize");
     let style = params.get("style");
     let theme = params.get("theme");
-    game = new Game(numMines, clearGrid, autoFirstMove, boardSize, style, theme); 
+    game = new Game(numMines, clearGrid, autoFirstMove, boardSize, style, theme);
 }
 
-export function setInitParameters()
-{
-    let numMines = document.getElementById("num_mines").value; 
+export function setInitParameters() {
+    let numMines = document.getElementById("num_mines").value;
 
     let clearGrid;
     if (document.getElementById("win_condition").value == "clear_grid") clearGrid = true;
     else clearGrid = false;
 
     let autoFirstMove = document.getElementById("auto_first_move").checked;
-    let boardSize = document.getElementById("board_size").value; 
+    let boardSize = document.getElementById("board_size").value;
     let style = document.getElementById("style").value;
-    let theme = document.getElementById("theme").value; 
+    let theme = document.getElementById("theme").value;
 
     const queryString = `game.php?numMines=${encodeURIComponent(numMines)}&clearGrid=${encodeURIComponent(clearGrid)}&autoFirstMove=${encodeURIComponent(autoFirstMove)}&boardSize=${encodeURIComponent(boardSize)}&style=${encodeURIComponent(style)}&theme=${encodeURIComponent(theme)}`;
 
-    window.location.href = queryString; 
+    window.location.href = queryString;
 }
 
-function initializeGame()
-{
+function initializeGame() {
     getInitParameters(game);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname === '/130-minesweeper-project/pages/game.php') {
-        initializeGame(); 
+        initializeGame();
     } else {
         console.log("Current path:", window.location.pathname);
     }
 });
 
-function process()
-{
-    if (game) game.updateTimerDisplay(); 
+function process() {
+    if (game) game.updateTimerDisplay();
 }
 
-process(); 
+process();
 
 window.setInitParameters = setInitParameters;
