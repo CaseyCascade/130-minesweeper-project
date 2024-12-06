@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<main>
 
     <form action="../server/process.php" method="POST">
         <h1>Login</h1>
@@ -24,10 +25,12 @@
 
         <button type="submit">Submit</button>
 
+        <br><br>
+        <p>Don't have an account? <a href="signup.php">Sign up</a></p>
+
     </form>
-
-
-
+</main>
+<?php include 'footer.php' ?>
 </body>
 
 </html>

@@ -83,7 +83,8 @@ function echo_username() {
 </head>
 
 <body>
-
+<main class="centered">
+<div class="leaderboard">
 <h1>Leaderboard</h1>
 <table>
     <thead>
@@ -111,14 +112,14 @@ function echo_username() {
 </table>
 
 <?php if ($playerId && $playerGames): ?>
-    <h2>Games Played by <h1><?php echo htmlspecialchars($playerNameResult['username']); ?></h1></h2>
+    <h3>Games played by: <h1><?php echo htmlspecialchars($playerNameResult['username']); ?></h1></h3>
     <?php 
 
     $creatornames = ['casey', 'caseycascade', 'bravo', 'braveo'];
     if (in_array($playerNameResult['username'], $creatornames)) {
-        echo '<p>Hey, isn\'t that one of the creators?...</p>';
-        echo '<p>Why are they here? They should be working on this project, <a target="_blank" href="https://www.youtube.com/watch?v=4VTBMznLrWs">HAHA!</a> *knee slap*</p>';
-        echo '<p>pls this isn\'t funny we only have till friday to finish it 🥲';
+        echo '<div>Hey, isn\'t that one of the creators?...</div>';
+        echo '<div>Why are they here? They should be working on this project, <a target="_blank" href="https://www.youtube.com/watch?v=4VTBMznLrWs">HAHA!</a> *knee slap*</div>';
+        echo '<div>pls this isn\'t funny we only have till friday to finish it 🥲</div>';
     }
 
     if ($playerNameResult['username'] == 'spamton') {
@@ -147,9 +148,10 @@ function echo_username() {
         </tbody>
     </table>
     <?php else: ?>
-    <p>No games found for this player 🙀. How unfortunate.</p>
-    <p>You know, <?php echo htmlspecialchars($playerNameResult['username']); ?> should start playing...</p>
-    <p>Why not make it a game? Convince them to play, and you'll get a special name in the credits :3 (maybe?) (no)</p>
+    <br>
+    <div>No games found for this player 🙀. How unfortunate.</div>
+    <div>You know, <?php echo htmlspecialchars($playerNameResult['username']); ?> should start playing...</div>
+    <div>Why not make it a game? Convince them to play, and you'll get a special name in the credits :3 (maybe?) (no)</div>
     <?php endif; ?>
 <?php endif; ?>
 
@@ -159,7 +161,10 @@ function echo_username() {
     <p>Here, wouldn't you like a taste of the power?</p>
     <a href="../debug/users_upload.php">AND I CALL THIS ONE, HOLY MOLY</p>
 <?php endif; ?>
+</div>
 
+</main>
+<?php include 'footer.php' ?>
 </body>
 
 </html>

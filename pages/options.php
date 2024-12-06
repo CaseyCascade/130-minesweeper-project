@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    
+<main class="centered">
 <form>
     
     <h1>Game Options</h1>
@@ -51,7 +51,8 @@
     <button type="button" onclick="setInitParameters()">Play Game</button>
 
 </form>
-
+</main>
+<?php include 'footer.php' ?>
 </body>
 
 </html>

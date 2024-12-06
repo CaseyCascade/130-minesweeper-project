@@ -9,9 +9,12 @@
 </head>
 
 <body>
+<main class="centered-thin">
 
     <h1>Help Page</h1>
     
+</main>
+<?php include 'footer.php' ?>
 </body>
 
 </html>

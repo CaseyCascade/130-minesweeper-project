@@ -9,14 +9,12 @@
 </head>
 
 <body>
-
     <header>
         <div class="nav-container">
             <div class="logo">Bravo & Casey's Minesweeper</div> 
             <nav>
                 <a href="index.php">Home</a>
-                <a href="help.php">Help</a>
-                <a href="options.php">Play Game</a>
+                <a href="options.php">Play</a>
                 <a href="leaderboard.php">Leaderboard</a>
 <?php
     if (!isset($_SESSION)) session_start();
@@ -27,15 +25,9 @@
         echo '<a href="logout.php">Logout</a>';
     }
 ?>
-                <a href="contact.php">Contact</a>
             </nav>
         </div>
     </header>
-
-    <main>
-
-    </main>
-
 </body>
 
 </html>

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+<main>
     <form action="../server/process.php" method="POST">
         <h1>Sign Up</h1>
         <input type="hidden" name="action" value="signup">
@@ -33,6 +33,8 @@
 
     </form>
 
+</main>
+<?php include 'footer.php' ?>
 </body>
 
 <script>

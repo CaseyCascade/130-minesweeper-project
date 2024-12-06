@@ -12,6 +12,7 @@
 
 <body>
 
+<main>
 <br>
 
 <div id ="resultPanel">
@@ -26,8 +27,11 @@
 <audio id="gameOverSound" src="../data/assets/kaboom.mp3"></audio>
 <audio id="youWinSound" src="../data/assets/victory.mp3"></audio> 
 <audio id="music" src="../data/assets/kaboom.mp3"></audio> <!-- TODO Replace w/ Music File -->
-</html>
 
+</main>
+<?php include 'footer.php' ?>
 </body>
+
+</html>
 
 <script type="module" src="../src/game.js"></script>
