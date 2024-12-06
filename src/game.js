@@ -89,7 +89,7 @@ export class Game {
         }
         else
         {
-            message = "game over...";
+            message = "GAME OVER...";
             gameOverSound.play();
         }
         const textNode = document.createTextNode(message);
