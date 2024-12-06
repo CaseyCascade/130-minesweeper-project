@@ -25,12 +25,12 @@
 }
 
 .card-bottom {
-    margin-top: auto; /* Pushes this container to the bottom of the card */
+    margin-top: auto; 
     padding-top: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* Adds space between email and GitHub icon */
+    gap: 10px; 
 }
 
 .profile-image {

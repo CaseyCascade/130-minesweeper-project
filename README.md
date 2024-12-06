@@ -22,6 +22,9 @@
 ## Client Side
 - utils.js
 
+## Styles
+- contact.css
+
 # Casey
 ## Pages
 - header.php
