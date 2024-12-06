@@ -1,4 +1,5 @@
 import { Grid } from './grid.js';
+import * as utils from './utils.js';
 
 var resultPanel = document.getElementById("resultPanel");
 var game;
@@ -51,8 +52,64 @@ export class Game {
             this.grid.autoFirstMove();
         }
         this.startTimer();
-        // TODO put music.play() here and loop it somehow. Pausing should be handled in endGame()
         music.play();
+
+        // used to upload to the form
+
+        // won (stored in saveResults) (0 | 1)
+        // duration (stored in saveResults from this.timerInterval) ("hh:mm:ss")
+        // startdatetime (initialized here) ("YYYY-MM-DD hh:mm:ss")
+        // numturns (initialized here) (int)
+
+        // YYYY-MM-DD hh-mm-ss
+        this.results_startdatetime = utils.getCurrentDateTime();
+        // int, number of turns
+        this.results_numturns = 0;
+    }
+
+    saveResults(won) {
+
+        let obj = {
+            "won": won,
+            "duration": utils.secondsToDuration(this.secondsElapsed),
+            "startdatetime": this.results_startdatetime,
+            "numturns": this.results_numturns
+        };
+
+        console.log("Won: " + obj.won);
+        console.log("STD: " + obj.duration);
+        console.log("DuS: " + obj.startdatetime);
+        console.log("Trn: " + obj.numturns);
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "../server/process.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log("Server Response: ", xhr.responseText);
+                // TODO: send you to the leaderboard page afterwards
+            } else {
+                console.error("Request failed. Status: ", xhr.status);
+            }
+        };
+
+        xhr.onerror = function() {
+            console.error("Request failed");
+        }
+
+        let postData = new URLSearchParams({
+            action: "finishgame",
+            won: obj.won,
+            duration: obj.duration,
+            durationsec: this.secondsElapsed,
+            startdatetime: obj.startdatetime,
+            numturns: obj.numturns
+        }).toString();
+
+        xhr.send(postData);
+
     }
 
     checkForWinCondition() {
@@ -77,6 +134,7 @@ export class Game {
 
 
     endGame(win_condition_met) {
+        this.saveResults(win_condition_met ? 1 : 0);
         music.pause();
         this.grid.revealGrid();
         this.stopTimer();
@@ -97,6 +155,7 @@ export class Game {
 
     update() {
         this.updateInfoPanel();
+        this.results_numturns++;
         if (this.checkForWinCondition()) this.endGame(true); // Game ends here or in cell when a mine is hit
     }
 

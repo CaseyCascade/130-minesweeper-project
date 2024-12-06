@@ -133,6 +133,10 @@ function handleRequest() {
                 if (isset($_POST['duration'])) {
                     $duration = $_POST['duration'];
                 }
+                $duration_sec = strtotime($duration) - 1733439600;
+                if (isset($_POST['durationsec'])) {
+                    $duration_sec = $_POST['durationsec'];
+                }
                 $numturns = -1;
                 if (isset($_POST['numturns'])) {
                     $numturns = (int)$_POST['numturns'];
@@ -147,7 +151,6 @@ function handleRequest() {
                 if ($stmt->execute()) {
                     echo "Inserted game into the database.<br><br>";
                     $stmt = $conn->prepare("UPDATE `users` SET gameswon = gameswon + ?, gamesplayed = gamesplayed + 1, timeplayedsec = timeplayedsec + ? WHERE id = ?");
-                    $duration_sec = strtotime($duration) - 1733439600;
                     echo 'Seconds: ' . $duration_sec . '<br>';
                     $stmt->bind_param("iii", $won, $duration_sec, $userid);
                     $stmt->execute();
