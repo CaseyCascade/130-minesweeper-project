@@ -1,6 +1,6 @@
 #grid {
     display: grid;
-    gap: 2px; /* Space between cells */
+    gap: 2px;
     border: 2px solid #00ff00;
     background-color: #001a00;
     padding: 10px;
