@@ -239,3 +239,54 @@ input[type="number"] {
 #resultPanel:empty {
     display: none;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Removes gaps between cells */
+    margin: 20px 0;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+th, td {
+    border: 1px solid #ccc; /* Light gray border */
+    padding: 10px 15px;
+    text-align: left; /* Align text to the left */
+}
+
+th {
+    background-color: #960000; /* Fresno State red */
+    color: white; /* Contrast text color */
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em; /* Subtle spacing for headers */
+    a {
+        color: white; /* Contrast text color */
+    }
+}
+
+tr:nth-child(even) {
+    background-color: #f4f4f4; /* Light gray background for alternating rows */
+}
+
+tr:nth-child(odd) {
+    background-color: white; /* Default white for other rows */
+}
+
+tr:hover {
+    background-color: #f1e4e4; /* Soft red-tinted background for hover effect */
+}
+
+td {
+    color: #333; /* Neutral text color for readability */
+}
+
+caption {
+    caption-side: top;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #960000; /* Match the theme */
+    margin-bottom: 10px;
+}
