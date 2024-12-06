@@ -11,7 +11,6 @@
 <body>
 <main class="centered-thin">
 
-    <h1>How To Play</h1>
     <h2>Before You Play...</h2>
     <p>
         Welcome to our Minesweeper game! To play, first create an account and sign in. Once you have done so, feel free to click 'Play Game' where you will be brought to the options menu!

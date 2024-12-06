@@ -39,7 +39,7 @@ if (isset($_SESSION['visited'])) {
     <div id="infoPanel"></div>
 </div>
 
-<!- Sound Effects & Other Assets -!>
+<!-- Sound Effects & Other Assets -->
 <audio id="gameOverSound" src="../data/assets/kaboom.mp3"></audio>
 <audio id="youWinSound" src="../data/assets/victory.mp3"></audio> 
 <audio loop id="music" src="../data/assets/music.mp3"></audio> <!-- TODO Replace w/ Music File -->
