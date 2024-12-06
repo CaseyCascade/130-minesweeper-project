@@ -116,7 +116,7 @@ function echo_username() {
     <?php 
 
     $creatornames = ['casey', 'caseycascade', 'bravo', 'braveo'];
-    if (in_array($playerNameResult['username'], $creatornames)) {
+    if (in_array(strtolower($playerNameResult['username']), $creatornames)) {
         echo '<div>Hey, isn\'t that one of the creators?...</div>';
         echo '<div>Why are they here? They should be working on this project, <a target="_blank" href="https://www.youtube.com/watch?v=4VTBMznLrWs">HAHA!</a> *knee slap*</div>';
         echo '<div>pls this isn\'t funny we only have till friday to finish it 🥲</div>';
